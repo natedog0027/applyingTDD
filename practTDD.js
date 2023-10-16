@@ -11,15 +11,30 @@ class stockPortfolio{
         return false;
     }
 
-    // Add new shares to the collection
-    addStocks(ticker, sharesToAdd){
-        this.collection[ticker] = sharesToAdd;
-    }
+    // // Add new shares to the collection
+    // addStocks(ticker, sharesToAdd){
+    //     this.collection[ticker] = sharesToAdd;
+    // }
 
-    // Check the amount of unique companies I have shares of
+    // Return the amount of unique companies I have shares of
     getNumTickers(){
         return Object.keys(this.collection).length;
     }
+
+    // Return the amount of shares of an inputted ticker
+    getNumShares(ticker){
+        if (!this.collection[ticker])
+            return 0
+        return this.collection[ticker];
+    }
+
+    purchaseShares(ticker, sharesToBuy){
+        if (!this.getNumShares(ticker))
+            this.collection[ticker] = sharesToBuy;
+        else 
+            this.collection[ticker] = this.getNumShares(ticker) + sharesToBuy;
+    }
+
 }
 
 
