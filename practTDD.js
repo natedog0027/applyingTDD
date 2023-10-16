@@ -11,6 +11,11 @@ class stockPortfolio{
         return false;
     }
 
+    // Add new shares to the collection
+    addStocks(ticker, sharesToAdd){
+        this.collection[ticker] = sharesToAdd;
+    }
+
 }
 
 
