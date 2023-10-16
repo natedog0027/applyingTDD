@@ -16,6 +16,10 @@ class stockPortfolio{
         this.collection[ticker] = sharesToAdd;
     }
 
+    // Check the amount of unique companies I have shares of
+    getNumTickers(){
+        return Object.keys(this.collection).length;
+    }
 }
 
 

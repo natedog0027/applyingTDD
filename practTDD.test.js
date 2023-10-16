@@ -5,11 +5,11 @@ let port1;
 
 // Create a clean new instance of the portfolio before each test
 beforeEach(() => {
-    port1 = new myFunctions.stockPortfolio();
+  port1 = new myFunctions.stockPortfolio();
 });
 
 test('Testing constructPortfolio -- success', () => {
-    expect(port1.collection).toEqual({});
+  expect(port1.collection).toEqual({});
   });
 
 test('Testing isEmpty', () => {
@@ -21,5 +21,12 @@ test('Testing addStocks', () => {
   port1.addStocks("GME", 3);
   port1.addStocks("RBLX", 67);
   expect(port1.isEmpty()).not.toBeTruthy();
+});
+
+test('Testing getNumTickers', () => {
+  port1.addStocks("GME", 22);
+  port1.addStocks("RBLX", 67);
+  expect(port1.getNumTickers()).toEqual(2);
+  expect(port1.getNumTickers()).not.toEqual(5);
 });
 
