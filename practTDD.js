@@ -35,6 +35,16 @@ class stockPortfolio{
             this.collection[ticker] = this.getNumShares(ticker) + sharesToBuy;
     }
 
+    sellShares(ticker, sharesToSell){
+        if (this.getNumShares(ticker) < sharesToSell)
+            throw new Error("Can't sell shares you don't have, broke boi");
+        else
+            this.collection[ticker] = this.getNumShares(ticker) - sharesToSell;
+        if (this.getNumShares(ticker) == 0)
+            delete this.collection[ticker];
+    }
+
+
 }
 
 

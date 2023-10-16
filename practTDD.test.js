@@ -28,6 +28,7 @@ test('Testing purchaseShares', () => {
   port1.purchaseShares("RBLX", 14);
   expect(port1.isEmpty()).not.toBeTruthy();
   expect(port1.getNumShares("RBLX")).toEqual(14);
+  
   port1.purchaseShares("RBLX", 13);
   expect(port1.getNumShares("RBLX")).toEqual(27);
 });
@@ -47,4 +48,20 @@ test('Testing getNumShares', () => {
   expect(port1.getNumShares("GME")).toEqual(22);
   expect(port1.getNumShares("GME")).not.toEqual(20);
   expect(port1.getNumShares("RBLX")).toEqual(3);
+});
+
+test('Testing sellShares', () => {
+  // sellShares(ticker, numShares)
+  expect(() => {port1.sellShares("RBLX", 15);}).toThrowError(/broke boi/);
+
+  port1.purchaseShares("RBLX", 14);
+  port1.sellShares("RBLX", 3);
+  expect(port1.getNumShares("RBLX")).toEqual(11);
+
+  expect(() => {port1.sellShares("RBLX", 15);}).toThrowError(/broke boi/);
+  expect(port1.getNumShares("RBLX")).toEqual(11);
+
+  port1.sellShares("RBLX", 11);
+  expect(port1.getNumShares("RBLX")).toEqual(0);
+  expect(port1.isEmpty()).toBeTruthy();
 });
